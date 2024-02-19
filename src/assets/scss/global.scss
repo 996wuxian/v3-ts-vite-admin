@@ -1,0 +1,109 @@
+@import url("./reset.scss");
+
+.page-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.page-content {
+  width: 100%;
+  height: 100%;
+}
+
+// flex
+.fl-j-a-w {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fl-d {
+  display: flex;
+  flex-direction: column;
+}
+
+.fl-a {
+  display: flex;
+  align-items: center;
+}
+
+.fl-js {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fl-a-j {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fl-a-w {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+// font
+.f-40-b {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.f-30-b {
+  font-size: 2vw;
+  font-weight: 700;
+}
+
+.f-20-b {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+html {
+  overflow-x:hidden;
+  overflow-y:hidden;
+}
+
+/* 滚动条 */
+body *::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+body *::-webkit-scrollbar-track {
+  // background: #fff;
+  border-radius: 2px;
+}
+body *::-webkit-scrollbar-thumb {
+  background: rgb(205, 206, 206);
+
+  border-radius: 10px;
+}
+body *::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+body *::-webkit-scrollbar-corner {
+  background: #fff;
+}
+
+
+@import './theme.scss';
+@mixin bg_color($color) {
+  background-color: $color;
+  [data-theme="black"] & {
+    background-color: $background-color-black;
+  }
+  [data-theme="white"] & {
+    background-color: $background-color-white;
+  }
+}
+@mixin font_color($color) {
+  color: $color;
+  [data-theme="black"] & {
+    color: $font-color-black;
+  }
+  [data-theme="white"] & {
+    color: $font-color-white;
+  }
+}

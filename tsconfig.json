@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["*"],
+      "@/*": ["./src/*"],
+      "/#/*": ["src/types/*"]
+    },
+    "types": ["vite/client", "node"],
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ES2020", "DOM", "DOM.Iterable", "scripthost"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "mock/**/*.ts",
+    "src/types/**/*.d.ts",
+    "library/**/*.ts",
+    "library/**/*.tsx",
+    "library/**/*.vue",
+    "test/**/*.ts"
+  ],
+  "exclude": ["node_modules", "library/build/chainWebpack"]
+}
