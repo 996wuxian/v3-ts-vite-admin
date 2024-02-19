@@ -1,4 +1,4 @@
-# shop-v3-ts-vite
+# v3-ts-vite-admin
 
 This template should help get you started developing with Vue 3 in Vite.
 
