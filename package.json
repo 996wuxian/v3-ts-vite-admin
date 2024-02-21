@@ -1,7 +1,23 @@
 {
   "name": "shop-v3-ts-vite",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/996wuxian/v3-ts-vite-admin",
+    "directory": ""
+  },
+  "author": "wuxian",
+  "description": "一个vue3 + ts + vite + element-plus的后台管理系统模板",
+  "keywords": [
+    "vue3",
+    "element-plus",
+    "vite",
+    "admin",
+    "后台管理系统",
+    "dx-admin"
+  ],
+  "homepage": "https://github.com/996wuxian/v3-ts-vite-admin",
   "scripts": {
     "dev": "vite --host",
     "build": "run-p  \"build-only {@}\" --",
