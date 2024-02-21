@@ -14,8 +14,7 @@
     "element-plus",
     "vite",
     "admin",
-    "后台管理系统",
-    "dx-admin"
+    "vue3后台管理系统模板"
   ],
   "homepage": "https://github.com/996wuxian/v3-ts-vite-admin",
   "scripts": {
