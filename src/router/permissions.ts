@@ -19,6 +19,8 @@ export function setupPermissions(router: Router) {
   router.beforeEach(async (to: any, from: any, next: any) => {
     //设置页面title
     document.title = getPageTitle(to.meta.title)
+    NProgress.start()
+    const hasRoles = useUser.userInfo.roles
 
     const token = Session.get('token')
     if (token) {
@@ -26,9 +28,7 @@ export function setupPermissions(router: Router) {
         next({ path: '/' })
         NProgress.done()
       } else {
-        // const hasRoles = useUser.userInfo.role
-        const hasRoles = true
-        if (hasRoles) {
+        if (hasRoles && hasRoles.length > 0) {
           if (useRouter.routes.length) {
             await useRouter.setRoutes()
             next()
@@ -44,7 +44,12 @@ export function setupPermissions(router: Router) {
             }
           }
         } else {
-          next()
+          Session.remove('token')
+          ElMessage({
+            type: 'warning',
+            message: '登录失效，请重新登录'
+          })
+          next('/login')
           NProgress.done()
         }
       }

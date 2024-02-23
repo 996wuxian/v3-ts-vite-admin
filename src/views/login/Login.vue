@@ -150,9 +150,10 @@ import { Login, QueryCode } from '@/api/auth'
 import { Session } from '@/utils/storage.ts'
 
 import { useRouter } from 'vue-router'
-import { ElMessage, ElMessageBox } from 'element-plus'
+import { ElMessage, ElMessageBox, ElNotification } from 'element-plus'
 
 import useUserStore from '@/stores/modules/user'
+import { setting } from '@/config/setting.config'
 const useUser = useUserStore()
 
 const router = useRouter()
@@ -186,11 +187,32 @@ const onSubmit = async () => {
   Session.set('token', data.token)
   if (!Session.get('token')) return
   useUser.setUserInfo({ userInfo: data.userInfo })
-  console.log('🚀 ~ onSubmit ~ data.userInfo:', data.userInfo)
   router.push('/')
   ElMessage({
     message: msg,
     type: 'success'
+  })
+  afterLogin()
+}
+
+const afterLogin = () => {
+  const hour = new Date().getHours()
+  const thisTime =
+    hour < 8
+      ? '早上好'
+      : hour <= 11
+      ? '上午好'
+      : hour <= 13
+      ? '中午好'
+      : hour < 18
+      ? '下午好'
+      : '晚上好'
+
+  ElNotification({
+    title: '登录成功',
+    message: `欢迎登录${setting.title}, ${thisTime}!`,
+    type: 'success',
+    duration: 2000
   })
 }
 

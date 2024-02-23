@@ -1,4 +1,4 @@
-const title = 'shop-admin'
+const title = 'dx-admin'
 
 export default function getPageTitle(pageTitle: string) {
   if (pageTitle) {

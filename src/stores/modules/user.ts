@@ -7,7 +7,7 @@ interface User {
   userName: string
   phone: string
   address: string
-  role: number
+  roles: Array<any>
   state: number
   createdAt: string
   updatedAt: string
