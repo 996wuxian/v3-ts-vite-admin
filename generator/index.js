@@ -18,8 +18,9 @@ const configList = fs
 //   configList.find((item) => item[0] === 'VUE_APP_BASE_URL')[1]
 // }swagger/v1/swagger.json`
 
-const swaggerUrl = `${configList.find((item) => item[0] === 'VITE_API_SWAGGER_API')[1]}api-docs`
+const swaggerUrl = `${configList.find((item) => item[0] === 'VITE_API_SWAGGER_API')[1]}api-json`
 
+console.log('🚀 ~ swaggerUrl:', swaggerUrl)
 execSync(
   `java -jar ./generator/openapi-generator-cli-6.0.0.jar generate -i ${swaggerUrl} -g typescript-axios -o ./src --additional-properties=withSeparateModelsAndApi=true,apiPackage=api,modelPackage=models --global-property models`,
   { stdio: 'inherit' }
