@@ -113,6 +113,17 @@ export const asyncRoutes = [
           roles: ['admin', 'editor']
           // isKeepAlive: true
         }
+      },
+      {
+        path: '/echarts',
+        name: 'Echarts',
+        component: () => import('@/views/echarts/Echarts.vue'),
+        meta: {
+          title: 'Echarts',
+          icon: 'Menu',
+          roles: ['admin', 'editor']
+          // isKeepAlive: true
+        }
       }
     ]
   },
