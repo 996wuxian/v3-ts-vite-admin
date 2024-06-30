@@ -71,11 +71,11 @@ export const asyncRoutes = [
     },
     children: [
       {
-        path: '/pdf-js',
-        name: 'PdfJs',
+        path: '/pdf',
+        name: 'Pdf',
         component: () => import('@/views/pdf-js/PdfJs.vue'),
         meta: {
-          title: 'PdfJs',
+          title: 'Pdf',
           icon: 'Menu',
           roles: ['admin', 'editor']
           // isKeepAlive: true
@@ -183,6 +183,19 @@ export const asyncRoutes = [
         component: () => import('@/views/menu-management/MenuManagement.vue'),
         meta: {
           title: '菜单管理',
+          icon: 'Menu',
+          father: '系统管理',
+          // roles: ['admin'],
+          hidden: false
+          // isKeepAlive: true
+        }
+      },
+      {
+        path: '/user-management',
+        name: 'UserManagement',
+        component: () => import('@/views/user-management/UserManagement.vue'),
+        meta: {
+          title: '用户管理',
           icon: 'Menu',
           father: '系统管理',
           // roles: ['admin'],

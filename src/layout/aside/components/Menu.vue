@@ -14,7 +14,7 @@
           </el-icon>
           <span
             style="width: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
-            >{{ item?.meta?.title }}</span
+            >{{ generateTitle(item?.meta?.title) }}</span
           >
         </template>
       </el-menu-item>
@@ -25,7 +25,9 @@
         <el-icon>
           <component :is="iconMapping[item.meta.icon]" />
         </el-icon>
-        <span>{{ item.meta.title }}</span>
+        <span style="width: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{
+          generateTitle(item.meta.title)
+        }}</span>
       </template>
       <Menu :router-list="item.children" />
     </el-sub-menu>
@@ -36,6 +38,8 @@
 import { useRouter } from 'vue-router'
 
 import { iconMapping } from '@/utils/iconMap'
+
+import { generateTitle } from '@/utils/i18n'
 
 defineProps({
   routerList: {

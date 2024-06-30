@@ -1,45 +1,25 @@
-import { fileURLToPath, URL } from 'node:url'
+import { defineConfig, loadEnv } from 'vite'
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import viteBaseConfig from './vite.base.config'
+import viteProdConfig from './vite.prod.config'
+import viteDevConfig from './vite.dev.config'
 
-export default defineConfig({
-  plugins: [
-    vue(),
-    AutoImport({
-      imports: [
-        'vue' // 已经内置了所以可以直接写入
-        // {
-        //   // 放其他库实现自动引入
-        //   loadsh: [
-        //     // 设置哪些方法可以自动引入
-        //     'concat'
-        //   ]
-        // }
-      ],
-      dts: 'src/auto-import.d.ts'
-      // 配置哪些本地目录支持自动引入
-      // dirs: ['src/utils/request.ts']
-    }),
-    Components({
-      resolvers: [ElementPlusResolver()]
-      // 配置哪些本地组件支持自动引入
-      // dirs: ['src/components']
-    })
-  ],
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: '@import "src/assets/scss/var.scss";' // 加载全局样式，使用scss特性
-      }
-    }
+const envResolver = {
+  build: () => {
+    console.log('生产环境')
+    return Object.assign({}, viteBaseConfig, viteProdConfig)
   },
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+  serve: () => {
+    console.log('开发环境')
+    // console.log(process.env, '123')
+    return Object.assign({}, viteBaseConfig, viteDevConfig)
   }
+}
+
+export default defineConfig(({ command, mode }) => {
+  console.log('🚀 ~ defineConfig ~ mode:', mode)
+  // mode 默认是development 当运行npm run dev时, 如果需要设置成其他的参数，则配置dev运行脚本后添加 --mode xxx
+  const env = loadEnv(mode, process.cwd())
+  console.log('🚀 ~ defineConfig ~ env:', env)
+  return envResolver[command]()
 })

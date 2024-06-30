@@ -11,6 +11,8 @@ import locale from 'element-plus/es/locale/lang/zh-cn'
 import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 
+import i18n from './lang'
+
 import App from './App.vue'
 
 // monaco-editor
@@ -49,6 +51,7 @@ app.config.warnHandler = () => null
 app.use(store)
 app.use(ElementPlus, { locale })
 app.use(VXETable)
+app.use(i18n)
 setupRouter(app)
 
 app.mount('#app')

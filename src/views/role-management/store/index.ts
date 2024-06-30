@@ -18,13 +18,6 @@ for (const item in ElementPlusIconsVue) {
   iconsData.value.push(item)
 }
 
-const taskOpen = (row) => {
-  form.value = {
-    ...row
-  }
-  taskVisible.value = true
-}
-
 const tableData = ref([])
 const queryUserMenu: VxeTableEvents.CellClick = async ({ row }) => {
   const { code, data } = await QueryUserMenu(row.id)
@@ -91,12 +84,22 @@ const handleCheckChange = (data, checked) => {
 }
 
 const taskVisible = ref(false)
+const $form = ref<any>([])
 const form = ref<any>([])
+
+const taskOpen = (row) => {
+  console.log(row, 'row')
+  form.value = {
+    ...row
+  }
+  taskVisible.value = true
+}
 
 export const useRoleManagementStore = () => {
   return {
     queryData,
     taskOpen,
+    $form,
     form,
     taskVisible,
     iconsData,

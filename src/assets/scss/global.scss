@@ -1,4 +1,4 @@
-@import url("./reset.scss");
+@import url('./reset.scss');
 
 .page-container {
   width: 100%;
@@ -62,8 +62,8 @@
 }
 
 html {
-  overflow-x:hidden;
-  overflow-y:hidden;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 /* 滚动条 */
@@ -87,23 +87,36 @@ body *::-webkit-scrollbar-corner {
   background: #fff;
 }
 
-
 @import './theme.scss';
 @mixin bg_color($color) {
   background-color: $color;
-  [data-theme="black"] & {
+  [data-theme='black'] & {
     background-color: $background-color-black;
   }
-  [data-theme="white"] & {
+  [data-theme='white'] & {
     background-color: $background-color-white;
   }
 }
+
 @mixin font_color($color) {
   color: $color;
-  [data-theme="black"] & {
+  [data-theme='black'] & {
     color: $font-color-black;
   }
-  [data-theme="white"] & {
+  [data-theme='white'] & {
     color: $font-color-white;
+  }
+}
+
+@mixin font_size($size) {
+  font-size: $size;
+  [data-size='small'] & {
+    font-size: $font-size-small;
+  }
+  [data-size='large'] & {
+    font-size: $font-size-large;
+  }
+  [data-size='default'] & {
+    font-size: $font-size-default;
   }
 }

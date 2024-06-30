@@ -13,11 +13,14 @@
       <el-col :span="12"><RoleManagementTree /></el-col>
     </el-row>
   </div>
+
+  <RoleManagementTask />
 </template>
 
 <script setup lang="ts">
 import RoleManagementTable from './components/RoleManagementTable.vue'
 import RoleManagementTree from './components/RoleManagementTree.vue'
+import RoleManagementTask from './components/RoleManagementTask.vue'
 
 import { useRoleManagementStore } from './store'
 

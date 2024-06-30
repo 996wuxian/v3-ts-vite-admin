@@ -1,6 +1,6 @@
 <template>
   <div class="page-content">
-    <PageHeader title="角色管理">
+    <PageHeader title="菜单管理">
       <template #right>
         <el-button @click="taskOpen()">新增菜单</el-button>
       </template>

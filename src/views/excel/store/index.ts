@@ -197,84 +197,65 @@ const exportData = () => {
   XLSX.utils.book_append_sheet(workbook, worksheet, 'work')
 
   // 向woeksheet工作表中的A1位置添加数据的数组（这是替换原有属性名）
-  XLSX.utils.sheet_add_aoa(
-    worksheet,
-    [
-      // [
-      //   '序号',
-      //   '姓名/工号',
-      //   '类别名称',
-      //   '星期一',
-      //   '',
-      //   '星期二',
-      //   '',
-      //   '星期三',
-      //   '',
-      //   '星期四',
-      //   '',
-      //   '星期五',
-      //   '',
-      //   '星期六',
-      //   '',
-      //   '星期天',
-      //   '',
-      //   '岗位'
-      // ]
-      headerData
-    ],
-    { origin: 'A1' }
-  )
+  XLSX.utils.sheet_add_aoa(worksheet, [headerData], { origin: 'A1' })
 
-  const sheetData = tableData.value.map((item) => {
-    return [item.id, item.name1, item.name2, item.name3]
-  })
+  const sheetData = []
+  const propNames = tableColumns.value
+    .map((item) => item.prop)
+    .filter((prop) => prop in tableData.value[0])
+  console.log('🚀 ~ exportData ~ propNames:', propNames)
+  // const sheetData = tableData.value.map((item) => {
+  //   console.log(item)
+
+  //   return [...tableColumns.value]
+  // })
   console.log('🚀 ~ sheetData ~ sheetData:', sheetData)
 
-  XLSX.utils.sheet_add_aoa(
-    worksheet,
-    [
-      // [
-      //   // '',
-      //   // '',
-      //   // '',
-      //   // '上午',
-      //   // '下午',
-      //   // '上午',
-      //   // '下午',
-      //   // '上午',
-      //   // '下午',
-      //   // '上午',
-      //   // '下午',
-      //   // '上午',
-      //   // '下午',
-      //   // '上午',
-      //   '下午',
-      //   '上午',
-      //   '下午'
-      // ],
-      // ['下午', '上午', '下午']
-      ...sheetData
-    ],
-    { origin: 'A2' }
-  )
+  // XLSX.utils.sheet_add_aoa(
+  //   worksheet,
+  //   [
+  //     // [
+  //     //   // '',
+  //     //   // '',
+  //     //   // '',
+  //     //   // '上午',
+  //     //   // '下午',
+  //     //   // '上午',
+  //     //   // '下午',
+  //     //   // '上午',
+  //     //   // '下午',
+  //     //   // '上午',
+  //     //   // '下午',
+  //     //   // '上午',
+  //     //   // '下午',
+  //     //   // '上午',
+  //     //   '下午',
+  //     //   '上午',
+  //     //   '下午'
+  //     // ],
+  //     // ['下午', '上午', '下午']
+  //     ...sheetData
+  //   ],
+  //   { origin: 'A2' }
+  // )
 
-  // 设置表头合并
-  worksheet['!merges'] = [
-    { s: { r: 0, c: 3 }, e: { r: 0, c: 4 } }
-    // { s: { r: 0, c: 5 }, e: { r: 0, c: 6 } },
-    // { s: { r: 0, c: 7 }, e: { r: 0, c: 8 } },
-    // { s: { r: 0, c: 9 }, e: { r: 0, c: 10 } },
-    // { s: { r: 0, c: 11 }, e: { r: 0, c: 12 } },
-    // { s: { r: 0, c: 13 }, e: { r: 0, c: 14 } },
-    // { s: { r: 0, c: 15 }, e: { r: 0, c: 16 } },
-    // { s: { r: 0, c: 0 }, e: { r: 1, c: 0 } },
-    // { s: { r: 0, c: 1 }, e: { r: 1, c: 1 } },
-    // { s: { r: 0, c: 2 }, e: { r: 1, c: 2 } },
-    // { s: { r: 0, c: 17 }, e: { r: 1, c: 17 } }
-  ]
+  // // 设置表头合并
+  // worksheet['!merges'] = [
+  //   { s: { r: 0, c: 3 }, e: { r: 0, c: 4 } }
+  //   // { s: { r: 0, c: 5 }, e: { r: 0, c: 6 } },
+  //   // { s: { r: 0, c: 7 }, e: { r: 0, c: 8 } },
+  //   // { s: { r: 0, c: 9 }, e: { r: 0, c: 10 } },
+  //   // { s: { r: 0, c: 11 }, e: { r: 0, c: 12 } },
+  //   // { s: { r: 0, c: 13 }, e: { r: 0, c: 14 } },
+  //   // { s: { r: 0, c: 15 }, e: { r: 0, c: 16 } },
+  //   // { s: { r: 0, c: 0 }, e: { r: 1, c: 0 } },
+  //   // { s: { r: 0, c: 1 }, e: { r: 1, c: 1 } },
+  //   // { s: { r: 0, c: 2 }, e: { r: 1, c: 2 } },
+  //   // { s: { r: 0, c: 17 }, e: { r: 1, c: 17 } }
+  // ]
 
-  // 导出工作簿，并命名导出文件名为Presidents.xlsx
-  XLSX.writeFile(workbook, 'Presidents.xlsx')
+  // // 导出工作簿，并命名导出文件名为Presidents.xlsx
+  // XLSX.writeFile(workbook, 'Presidents.xlsx')
 }
 
 export const useExcelStore = () => {
