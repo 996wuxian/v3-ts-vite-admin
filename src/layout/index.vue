@@ -10,7 +10,6 @@
         'large-font': usetheme.fontSize === 'large'
       }"
     >
-      >
       <div class="warp-aside">
         <Aside />
       </div>
@@ -44,6 +43,9 @@ import { watch } from 'vue'
 
 import { useRoute } from 'vue-router'
 const route = useRoute()
+
+// todo loading
+// bug loading
 
 import usethemeStore from '@/stores/modules/theme'
 const usetheme = usethemeStore()

@@ -1,6 +1,6 @@
 <template>
   <div class="aside">
-    <div class="fl-j-a-w" style="width: 80%">
+    <div class="fl-j-a-w" style="width: 90%">
       <img
         style="width: 50px"
         :src="
@@ -80,6 +80,11 @@ routerList.value = useRoutes.routes
     border-radius: 10px;
   }
 
+  .el-menu-item.is-active {
+    background-color: #80a596;
+    color: #fff;
+  }
+
   .el-menu-item:hover {
     background-color: #80a596;
     color: #ffd04b;
@@ -89,6 +94,7 @@ routerList.value = useRoutes.routes
   }
   .el-sub-menu__title:hover {
     background-color: #80a596;
+    color: #ffd04b;
   }
   .el-menu-vertical-demo {
     border: none;

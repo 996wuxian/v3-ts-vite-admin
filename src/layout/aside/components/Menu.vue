@@ -1,24 +1,21 @@
 <template>
   <template v-for="item in routerList" :key="item.path">
     <!-- 没有子集 -->
-    <templatem>
-      <el-menu-item
-        v-if="item?.meta?.hidden != '1'"
-        :index="item.path"
-        style="width: 100%; overflow: hidden"
-        @click="toPage(item)"
-      >
-        <template #title>
-          <el-icon>
-            <component :is="iconMapping[item?.meta?.icon]" />
-          </el-icon>
-          <span
-            style="width: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap"
-            >{{ generateTitle(item?.meta?.title) }}</span
-          >
-        </template>
-      </el-menu-item>
-    </templatem>
+    <el-menu-item
+      v-if="item?.meta?.hidden != '1'"
+      :index="item.path"
+      style="width: 100%; overflow: hidden"
+      @click="toPage(item)"
+    >
+      <template #title>
+        <el-icon>
+          <component :is="iconMapping[item?.meta?.icon]" />
+        </el-icon>
+        <span style="width: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{{
+          generateTitle(item?.meta?.title)
+        }}</span>
+      </template>
+    </el-menu-item>
     <!-- 有子集 -->
     <el-sub-menu v-if="item.children && item.children.length" :index="item.path">
       <template #title>
